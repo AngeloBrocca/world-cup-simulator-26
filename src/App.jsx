@@ -25,6 +25,15 @@ function AppShell() {
         input[type=number]{-moz-appearance:textfield;}
         ::-webkit-scrollbar{height:4px;width:4px;background:transparent;}
         ::-webkit-scrollbar-thumb{background:rgba(245,197,24,0.25);border-radius:4px;}
+        img {
+          width: 14px;
+          height: 14px;
+          object-fit: contain;
+        }
+        div > div > img {
+          width: 64px !important;
+          height: 64px !important;
+        }
       `}</style>
       <AppHeader onReset={resetTournament}/>
       <main style={{maxWidth:1200,margin:"0 auto",padding:`0 ${T.space.lg}px ${T.space.xl*2}px`}}>

@@ -11,9 +11,9 @@ export function KnockoutView() {
       <p style={{color:T.color.textMuted,fontSize:13,marginBottom:T.space.lg}}>Times preenchidos pelos vencedores dos 16-avos. Clique para avançar.</p>
       <div style={{display:"flex",gap:T.space.lg,overflowX:"auto",paddingBottom:T.space.md,alignItems:"flex-start"}}>
         {roundOrder.map(round=>(
-          <div key={round} style={{minWidth:200,flexShrink:0}}>
+          <div key={round} style={{minWidth: 200, flexShrink: 0, display: "flex", flexDirection: "column", height: "100%"}}>
             <SectionLabel>{ROUND_LABELS[round]}</SectionLabel>
-            <div style={{display:"flex",flexDirection:"column",gap:T.space.sm}}>
+            <div style={{display: "flex", flexDirection: "column", gap: T.space.sm, justifyContent: "center", flex: 1}}>
               {knockoutBracket[round].map((match,i)=>(
                 <BracketMatchCard key={match.id} match={match} onPick={w=>pickWinner(round,i,w)}/>
               ))}

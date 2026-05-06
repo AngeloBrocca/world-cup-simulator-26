@@ -1,11 +1,19 @@
 import { ROUND_PROGRESSION } from "../domain/types";
 
 export function generateGroupMatches(teams) {
-  const matches = [];
-  for (let i = 0; i < teams.length; i++)
-    for (let j = i + 1; j < teams.length; j++)
-      matches.push({ id:`${teams[i].id}-vs-${teams[j].id}`, home:teams[i], away:teams[j], homeGoals:null, awayGoals:null });
-  return matches;
+  // Ordem oficial FIFA para grupos de 4 times:
+  // Rodada 1: [0]×[1] e [2]×[3]
+  // Rodada 2: [0]×[2] e [1]×[3]
+  // Rodada 3: [0]×[3] e [1]×[2]
+  const [t1, t2, t3, t4] = teams;
+  return [
+    { id:`${t1.id}-vs-${t2.id}`, round:1, home:t1, away:t2, homeGoals:null, awayGoals:null },
+    { id:`${t3.id}-vs-${t4.id}`, round:1, home:t3, away:t4, homeGoals:null, awayGoals:null },
+    { id:`${t1.id}-vs-${t3.id}`, round:2, home:t1, away:t3, homeGoals:null, awayGoals:null },
+    { id:`${t2.id}-vs-${t4.id}`, round:2, home:t2, away:t4, homeGoals:null, awayGoals:null },
+    { id:`${t1.id}-vs-${t4.id}`, round:3, home:t1, away:t4, homeGoals:null, awayGoals:null },
+    { id:`${t2.id}-vs-${t3.id}`, round:3, home:t2, away:t3, homeGoals:null, awayGoals:null },
+  ];
 }
  
 export function calculateStandings(teams, matches) {

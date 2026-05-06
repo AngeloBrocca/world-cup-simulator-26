@@ -12,7 +12,7 @@ export function StandingsTable({standings,groupKey,best8}) {
             return (
               <tr key={s.team.id} style={{background:q1?(i===0?"rgba(245,197,24,0.07)":"rgba(245,197,24,0.03)"):q3?T.color.thirdDim:"transparent",borderBottom:`1px solid ${T.color.border}`}}>
                 <td style={{padding:"7px 4px",textAlign:"center"}}><span style={{fontWeight:700,color:q1?T.color.gold:q3?T.color.third:T.color.textMuted,fontSize:10}}>{i+1}º</span></td>
-                <td style={{padding:"7px 4px"}}><span style={{display:"flex",alignItems:"center",gap:5}}><span style={{fontSize:14}}>{s.team.flag}</span><span style={{color:T.color.text,fontSize:12}}>{s.team.name}</span></span></td>
+                <td style={{padding:"7px 4px"}}><span style={{display:"flex",alignItems:"center",gap:6}}> <span style={{ width:16, height:16, display:"flex", alignItems:"center", justifyContent:"center" }} > {s.team.flag} </span> <span style={{color:T.color.text,fontSize:12}}> {s.team.name} </span> </span></td>
                 <td style={{padding:"7px 4px",textAlign:"center",fontWeight:700,color:T.color.gold}}>{s.points}</td>
                 <td style={{padding:"7px 4px",textAlign:"center",color:T.color.textDim}}>{s.played}</td>
                 <td style={{padding:"7px 4px",textAlign:"center",color:T.color.win}}>{s.won}</td>
