@@ -10,8 +10,7 @@ import { TabButton } from "./components/ui/Primitives";
 
 const TABS = [
   {id:"groups",  label:"⚽ Fase de Grupos"},
-  {id:"r32",     label:"🔵 16-avos (Rodada de 32)"},
-  {id:"knockout",label:"🏆 Eliminatórias"},
+  {id:"knockout",label:"🏆 Mata-Mata"},
 ];
  
 function AppShell() {
@@ -25,6 +24,12 @@ function AppShell() {
         input[type=number]{-moz-appearance:textfield;}
         ::-webkit-scrollbar{height:4px;width:4px;background:transparent;}
         ::-webkit-scrollbar-thumb{background:rgba(245,197,24,0.25);border-radius:4px;}
+        .tabs-nav::-webkit-scrollbar {
+          display: none;
+        }
+        .tabs-nav {
+          scrollbar-width: none;
+        }
         img {
           width: 14px;
           height: 14px;
@@ -37,11 +42,10 @@ function AppShell() {
       `}</style>
       <AppHeader onReset={resetTournament}/>
       <main style={{maxWidth:1200,margin:"0 auto",padding:`0 ${T.space.lg}px ${T.space.xl*2}px`}}>
-        <nav style={{display:"flex",borderBottom:`1px solid ${T.color.border}`,marginBottom:T.space.lg,marginTop:T.space.lg,overflowX:"auto"}}>
+        <nav className="tabs-nav" style={{display:"flex",borderBottom:`1px solid ${T.color.border}`,marginBottom:T.space.lg,marginTop:T.space.lg,overflowX:"auto"}}>
           {TABS.map(({id,label})=><TabButton key={id} active={view===id} onClick={()=>setView(id)}>{label}</TabButton>)}
         </nav>
         {view==="groups"   && <GroupStageView/>}
-        {view==="r32"      && <R32View/>}
         {view==="knockout" && <KnockoutView/>}
       </main>
     </div>
