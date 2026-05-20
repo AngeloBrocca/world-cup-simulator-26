@@ -3,7 +3,6 @@ import { useAppNavigation } from "./hooks/useAppNavigation";
 
 import {AppHeader} from "./components/ui/AppHeader";
 import {GroupStageView} from "./components/groups/GroupStageView";
-import {R32View} from "./components/bracket/R32View";
 import {KnockoutView} from "./components/bracket/KnockoutView";
 import { T } from "./components/ui/tokens";
 import { TabButton } from "./components/ui/Primitives";
