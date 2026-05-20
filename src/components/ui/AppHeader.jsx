@@ -23,3 +23,4 @@ export function AppHeader({onReset}) {
     </header>
   );
 }
+

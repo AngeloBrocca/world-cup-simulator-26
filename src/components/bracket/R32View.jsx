@@ -14,7 +14,7 @@ function TeamPill({team,color}) {
 }
  
 export function R32View() {
-  const {r32Matches,pickWinner,best8} = useR32();
+  const {r32Matches,pickWinner} = useR32();
   const pairs = Array.from({length:8},(_,i)=>({
     r16:i+1, m0:r32Matches[i*2], m1:r32Matches[i*2+1], i0:i*2, i1:i*2+1,
   }));
