@@ -13,7 +13,7 @@ export const ACTIONS = { SET_SCORE:"SET_SCORE", SET_GROUP:"SET_GROUP", SET_VIEW:
 const PRESET_SCORES = {
   // Grupo A — Rodada 1
   "MEX-vs-RSA": { homeGoals: 2, awayGoals: 0 },
-  // "KOR-vs-CZE": { homeGoals: 0, awayGoals: 0 },
+  "KOR-vs-CZE": { homeGoals: 2, awayGoals: 1 },
 };
 
 function applyPresetScores(groupMatches) {
