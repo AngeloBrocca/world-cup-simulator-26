@@ -5,16 +5,39 @@ import { deriveR16FromR32 } from "../services/seedingService";
 
 
 export const ACTIONS = { SET_SCORE:"SET_SCORE", SET_GROUP:"SET_GROUP", SET_VIEW:"SET_VIEW", PICK_R32:"PICK_R32", PICK_WINNER:"PICK_WINNER", RESET:"RESET" };
- 
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RESULTADOS JÁ DISPUTADOS — adicione aqui os placares confirmados.
+// Chave: "ID_HOME-vs-ID_AWAY"  (mesma lógica de generateGroupMatches)
+// ─────────────────────────────────────────────────────────────────────────────
+const PRESET_SCORES = {
+  // Grupo A — Rodada 1
+  "MEX-vs-RSA": { homeGoals: 2, awayGoals: 0 },
+  // "KOR-vs-CZE": { homeGoals: 0, awayGoals: 0 },
+};
+
+function applyPresetScores(groupMatches) {
+  const updated = {};
+  for (const [group, matches] of Object.entries(groupMatches)) {
+    updated[group] = matches.map(m => {
+      const preset = PRESET_SCORES[m.id];
+      return preset ? { ...m, ...preset } : m;
+    });
+  }
+  return updated;
+}
+
+
 function buildInitialState() {
+  const rawMatches = Object.fromEntries(GROUP_KEYS.map(k => [k, generateGroupMatches(GROUPS[k])]));
   return {
-    view: "groups",
-    activeGroup: "A",
-    groupMatches: Object.fromEntries(GROUP_KEYS.map(k => [k, generateGroupMatches(GROUPS[k])])),
-    r32Winners: Array(16).fill(null),
-    knockoutBracket: generateKnockoutBracket(),
+    view:"groups", activeGroup:"A",
+    groupMatches: applyPresetScores(rawMatches),
+    r32Winners:Array(16).fill(null),
+    knockoutBracket:generateKnockoutBracket(),
   };
 }
+
  
 function reducer(state, action) {
   switch (action.type) {
