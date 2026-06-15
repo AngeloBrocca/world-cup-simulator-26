@@ -11,9 +11,18 @@ export const ACTIONS = { SET_SCORE:"SET_SCORE", SET_GROUP:"SET_GROUP", SET_VIEW:
 // Chave: "ID_HOME-vs-ID_AWAY"  (mesma lógica de generateGroupMatches)
 // ─────────────────────────────────────────────────────────────────────────────
 const PRESET_SCORES = {
-  // Grupo A — Rodada 1
+  // Rodada 1
   "MEX-vs-RSA": { homeGoals: 2, awayGoals: 0 },
   "KOR-vs-CZE": { homeGoals: 2, awayGoals: 1 },
+  "CAN-vs-BIH": { homeGoals: 1, awayGoals: 1 },
+  "QAT-vs-SUI": { homeGoals: 1, awayGoals: 1 },
+  "BRA-vs-MAR": { homeGoals: 1, awayGoals: 1 },
+  "HTI-vs-SCO": { homeGoals: 0, awayGoals: 1 },
+  "AUS-vs-TUR": { homeGoals: 2, awayGoals: 0 },
+  "GER-vs-CUW": { homeGoals: 7, awayGoals: 1 },
+  "CIV-vs-ECU": { homeGoals: 2, awayGoals: 2 },
+  "NED-vs-JPN": { homeGoals: 1, awayGoals: 0 },
+  "SWE-vs-TUN": { homeGoals: 5, awayGoals: 1 },
 };
 
 function applyPresetScores(groupMatches) {
