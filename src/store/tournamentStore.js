@@ -76,16 +76,16 @@ const PRESET_SCORES = {
   // "CPV-vs-KSA": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO I
-  // "FRA-vs-SEN": { homeGoals: 0, awayGoals: 0 },
-  // "IRQ-vs-NOR": { homeGoals: 0, awayGoals: 0 },
+  "FRA-vs-SEN": { homeGoals: 3, awayGoals: 1 },
+  "IRQ-vs-NOR": { homeGoals: 1, awayGoals: 4 },
   // "FRA-vs-IRQ": { homeGoals: 0, awayGoals: 0 },
   // "SEN-vs-NOR": { homeGoals: 0, awayGoals: 0 },
   // "FRA-vs-NOR": { homeGoals: 0, awayGoals: 0 },
   // "SEN-vs-IRQ": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO J
-  // "ARG-vs-ALG": { homeGoals: 0, awayGoals: 0 },
-  // "AUT-vs-JOR": { homeGoals: 0, awayGoals: 0 },
+  "ARG-vs-ALG": { homeGoals: 3, awayGoals: 0 },
+  "AUT-vs-JOR": { homeGoals: 3, awayGoals: 1 },
   // "ARG-vs-AUT": { homeGoals: 0, awayGoals: 0 },
   // "ALG-vs-JOR": { homeGoals: 0, awayGoals: 0 },
   // "ARG-vs-JOR": { homeGoals: 0, awayGoals: 0 },
