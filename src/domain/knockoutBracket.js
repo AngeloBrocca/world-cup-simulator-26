@@ -21,7 +21,6 @@ export const R32_FIXTURE_BASES = [
 
  
 export const _c = (a,b,d,e,g,i,k,l) => ({A:a,B:b,D:d,E:e,G:g,I:i,K:k,L:l});
- 
 export const ANNEX_C = {
   // ── 1-9: sem A,B,C ──
   "EFGHIJKL":_c("E","J","I","F","H","G","L","K"),
@@ -198,14 +197,27 @@ export const ANNEX_C = {
 export function resolveThirdSlots(qualifiedGroups) {
   const key = [...qualifiedGroups].sort().join("");
   if (ANNEX_C[key]) return ANNEX_C[key];
-  // Fallback: distribui respeitando "3º ≠ grupo do 1º"
+  // Fallback com backtracking — garante que todos os 8 slots sejam preenchidos
+  // respeitando a regra "3º não pode enfrentar o 1º do mesmo grupo".
+  // O fallback greedy anterior falhava em 118 combinações válidas: chegava no
+  // último slot com apenas o grupo homônimo disponível (ex: slot "L" vs único
+  // restante "L"), deixando o slot vazio e causando um time null no chaveamento.
   const winnerSlots = ["A","B","D","E","G","I","K","L"];
   const thirds = [...qualifiedGroups].sort();
-  const assignment = {};
-  const used = new Set();
-  for (const ws of winnerSlots) {
-    const match = thirds.find(g => !used.has(g) && g !== ws);
-    if (match) { assignment[ws] = match; used.add(match); }
+  function backtrack(slotIndex, used, assignment) {
+    if (slotIndex === winnerSlots.length) return assignment;
+    const ws = winnerSlots[slotIndex];
+    for (const g of thirds) {
+      if (!used.has(g) && g !== ws) {
+        used.add(g);
+        assignment[ws] = g;
+        const result = backtrack(slotIndex + 1, used, assignment);
+        if (result) return result;
+        used.delete(g);
+        delete assignment[ws];
+      }
+    }
+    return null;
   }
-  return assignment;
+  return backtrack(0, new Set(), {}) ?? {};
 }
