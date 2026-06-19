@@ -14,7 +14,7 @@ const PRESET_SCORES = {
   // GRUPO A
   "MEX-vs-RSA": { homeGoals: 2, awayGoals: 0 },
   "KOR-vs-CZE": { homeGoals: 2, awayGoals: 1 },
-  // "MEX-vs-KOR": { homeGoals: 0, awayGoals: 0 },
+  "MEX-vs-KOR": { homeGoals: 1, awayGoals: 0 },
   "RSA-vs-CZE": { homeGoals: 1, awayGoals: 1 },
   // "MEX-vs-CZE": { homeGoals: 0, awayGoals: 0 },
   // "RSA-vs-KOR": { homeGoals: 0, awayGoals: 0 },
@@ -22,8 +22,8 @@ const PRESET_SCORES = {
   // GRUPO B
   "CAN-vs-BIH": { homeGoals: 1, awayGoals: 1 },
   "QAT-vs-SUI": { homeGoals: 1, awayGoals: 1 },
-  // "CAN-vs-QAT": { homeGoals: 0, awayGoals: 0 },
-  // "BIH-vs-SUI": { homeGoals: 0, awayGoals: 0 },
+  "CAN-vs-QAT": { homeGoals: 6, awayGoals: 0 },
+  "BIH-vs-SUI": { homeGoals: 1, awayGoals: 4 },
   // "CAN-vs-SUI": { homeGoals: 0, awayGoals: 0 },
   // "BIH-vs-QAT": { homeGoals: 0, awayGoals: 0 },
 
