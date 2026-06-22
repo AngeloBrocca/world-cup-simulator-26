@@ -30,39 +30,39 @@ const PRESET_SCORES = {
   // GRUPO C
   "BRA-vs-MAR": { homeGoals: 1, awayGoals: 1 },
   "HTI-vs-SCO": { homeGoals: 0, awayGoals: 1 },
-  // "BRA-vs-HTI": { homeGoals: 0, awayGoals: 0 },
-  // "MAR-vs-SCO": { homeGoals: 0, awayGoals: 0 },
+  "BRA-vs-HTI": { homeGoals: 3, awayGoals: 0 },
+  "MAR-vs-SCO": { homeGoals: 1, awayGoals: 0 },
   // "BRA-vs-SCO": { homeGoals: 0, awayGoals: 0 },
   // "MAR-vs-HTI": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO D
   "AUS-vs-TUR": { homeGoals: 2, awayGoals: 0 },
   "USA-vs-PAR": { homeGoals: 4, awayGoals: 1 },
-  // "USA-vs-AUS": { homeGoals: 0, awayGoals: 0 },
-  // "PAR-vs-TUR": { homeGoals: 0, awayGoals: 0 },
+  "USA-vs-AUS": { homeGoals: 2, awayGoals: 0 },
+  "PAR-vs-TUR": { homeGoals: 1, awayGoals: 0 },
   // "USA-vs-TUR": { homeGoals: 0, awayGoals: 0 },
   // "PAR-vs-AUS": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO E
   "GER-vs-CUW": { homeGoals: 7, awayGoals: 1 },
   "CIV-vs-ECU": { homeGoals: 2, awayGoals: 2 },
-  // "GER-vs-CIV": { homeGoals: 0, awayGoals: 0 },
-  // "CUW-vs-ECU": { homeGoals: 0, awayGoals: 0 },
+  "GER-vs-CIV": { homeGoals: 2, awayGoals: 1 },
+  "CUW-vs-ECU": { homeGoals: 0, awayGoals: 0 },
   // "GER-vs-ECU": { homeGoals: 0, awayGoals: 0 },
   // "CUW-vs-CIV": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO F
   "NED-vs-JPN": { homeGoals: 1, awayGoals: 0 },
   "SWE-vs-TUN": { homeGoals: 5, awayGoals: 1 },
-  // "NED-vs-SWE": { homeGoals: 0, awayGoals: 0 },
-  // "JPN-vs-TUN": { homeGoals: 0, awayGoals: 0 },
+  "NED-vs-SWE": { homeGoals: 5, awayGoals: 1 },
+  "JPN-vs-TUN": { homeGoals: 4, awayGoals: 0 },
   // "NED-vs-TUN": { homeGoals: 0, awayGoals: 0 },
   // "JPN-vs-SWE": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO G
   "BEL-vs-EGY": { homeGoals: 1, awayGoals: 1 },
   "IRN-vs-NZL": { homeGoals: 2, awayGoals: 2 },
-  // "BEL-vs-IRN": { homeGoals: 0, awayGoals: 0 },
+  "BEL-vs-IRN": { homeGoals: 0, awayGoals: 0 },
   // "EGY-vs-NZL": { homeGoals: 0, awayGoals: 0 },
   // "BEL-vs-NZL": { homeGoals: 0, awayGoals: 0 },
   // "EGY-vs-IRN": { homeGoals: 0, awayGoals: 0 },
@@ -70,8 +70,8 @@ const PRESET_SCORES = {
   // GRUPO H
   "ESP-vs-CPV": { homeGoals: 0, awayGoals: 0 },
   "KSA-vs-URU": { homeGoals: 1, awayGoals: 1 },
-  // "ESP-vs-KSA": { homeGoals: 0, awayGoals: 0 },
-  // "CPV-vs-URU": { homeGoals: 0, awayGoals: 0 },
+  "ESP-vs-KSA": { homeGoals: 4, awayGoals: 0 },
+  "CPV-vs-URU": { homeGoals: 2, awayGoals: 2 },
   // "ESP-vs-URU": { homeGoals: 0, awayGoals: 0 },
   // "CPV-vs-KSA": { homeGoals: 0, awayGoals: 0 },
 
