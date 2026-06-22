@@ -63,7 +63,7 @@ const PRESET_SCORES = {
   "BEL-vs-EGY": { homeGoals: 1, awayGoals: 1 },
   "IRN-vs-NZL": { homeGoals: 2, awayGoals: 2 },
   "BEL-vs-IRN": { homeGoals: 0, awayGoals: 0 },
-  // "EGY-vs-NZL": { homeGoals: 0, awayGoals: 0 },
+  "EGY-vs-NZL": { homeGoals: 3, awayGoals: 1 },
   // "BEL-vs-NZL": { homeGoals: 0, awayGoals: 0 },
   // "EGY-vs-IRN": { homeGoals: 0, awayGoals: 0 },
 
