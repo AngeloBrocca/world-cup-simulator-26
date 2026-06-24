@@ -1,22 +1,22 @@
 /* eslint-disable no-dupe-keys */
 // Estrutura base dos 16 confrontos — slots "bestThird" são resolvidos dinamicamente
 export const R32_FIXTURE_BASES = [
-  { id:"r32-0",  label:"M73", home:{type:"runnerUp",g:"A"}, away:{type:"runnerUp", g:"B"} },
-  { id:"r32-1",  label:"M74", home:{type:"winner",  g:"E"}, away:{type:"bestThird",w:"E"} },
-  { id:"r32-2",  label:"M75", home:{type:"winner",  g:"F"}, away:{type:"runnerUp", g:"C"} },
-  { id:"r32-3",  label:"M76", home:{type:"winner",  g:"C"}, away:{type:"runnerUp", g:"F"} },
-  { id:"r32-4",  label:"M77", home:{type:"winner",  g:"I"}, away:{type:"bestThird",w:"I"} },
-  { id:"r32-5",  label:"M78", home:{type:"runnerUp",g:"E"}, away:{type:"runnerUp", g:"I"} },
-  { id:"r32-6",  label:"M79", home:{type:"winner",  g:"A"}, away:{type:"bestThird",w:"A"} },
-  { id:"r32-7",  label:"M80", home:{type:"winner",  g:"L"}, away:{type:"bestThird",w:"L"} },
-  { id:"r32-8",  label:"M81", home:{type:"winner",  g:"D"}, away:{type:"bestThird",w:"D"} },
-  { id:"r32-9",  label:"M82", home:{type:"winner",  g:"G"}, away:{type:"bestThird",w:"G"} },
-  { id:"r32-10", label:"M83", home:{type:"runnerUp",g:"K"}, away:{type:"runnerUp", g:"L"} },
-  { id:"r32-11", label:"M84", home:{type:"winner",  g:"H"}, away:{type:"runnerUp", g:"J"} },
-  { id:"r32-12", label:"M85", home:{type:"winner",  g:"B"}, away:{type:"bestThird",w:"B"} },
-  { id:"r32-13", label:"M86", home:{type:"winner",  g:"J"}, away:{type:"runnerUp", g:"H"} },
-  { id:"r32-14", label:"M87", home:{type:"winner",  g:"K"}, away:{type:"bestThird",w:"K"} },
-  { id:"r32-15", label:"M88", home:{type:"runnerUp",g:"D"}, away:{type:"runnerUp", g:"G"} },
+  { id:"r32-0",  label:"M73", home:{type:"winner",  g:"E"}, away:{type:"bestThird", eligible:["A","B","C","D","F"]} },
+  { id:"r32-1",  label:"M74", home:{type:"winner",  g:"I"}, away:{type:"bestThird", eligible:["C","D","F","G","H"]} },
+  { id:"r32-2",  label:"M75", home:{type:"runnerUp",g:"A"}, away:{type:"runnerUp",  g:"B"} },
+  { id:"r32-3",  label:"M76", home:{type:"winner",  g:"F"}, away:{type:"runnerUp",  g:"C"} },
+  { id:"r32-4",  label:"M77", home:{type:"runnerUp",g:"K"}, away:{type:"runnerUp",  g:"L"} },
+  { id:"r32-5",  label:"M78", home:{type:"winner",  g:"H"}, away:{type:"runnerUp",  g:"J"} },
+  { id:"r32-6",  label:"M79", home:{type:"winner",  g:"D"}, away:{type:"bestThird", eligible:["B","E","F","I","J"]} },
+  { id:"r32-7",  label:"M80", home:{type:"winner",  g:"G"}, away:{type:"bestThird", eligible:["A","E","H","I","J"]} },
+  { id:"r32-8",  label:"M81", home:{type:"winner",  g:"C"}, away:{type:"runnerUp",  g:"F"} },
+  { id:"r32-9",  label:"M82", home:{type:"runnerUp",g:"E"}, away:{type:"runnerUp",  g:"I"} },
+  { id:"r32-10", label:"M83", home:{type:"winner",  g:"A"}, away:{type:"bestThird", eligible:["C","E","F","H","I"]} },
+  { id:"r32-11", label:"M84", home:{type:"winner",  g:"L"}, away:{type:"bestThird", eligible:["E","H","I","J","K"]} },
+  { id:"r32-12", label:"M85", home:{type:"winner",  g:"J"}, away:{type:"runnerUp",  g:"H"} },
+  { id:"r32-13", label:"M86", home:{type:"runnerUp",g:"D"}, away:{type:"runnerUp",  g:"G"} },
+  { id:"r32-14", label:"M87", home:{type:"winner",  g:"B"}, away:{type:"bestThird", eligible:["E","F","G","I","J"]} },
+  { id:"r32-15", label:"M88", home:{type:"winner",  g:"K"}, away:{type:"bestThird", eligible:["D","E","I","J","L"]} },
 ];
 
  
@@ -197,11 +197,6 @@ export const ANNEX_C = {
 export function resolveThirdSlots(qualifiedGroups) {
   const key = [...qualifiedGroups].sort().join("");
   if (ANNEX_C[key]) return ANNEX_C[key];
-  // Fallback com backtracking — garante que todos os 8 slots sejam preenchidos
-  // respeitando a regra "3º não pode enfrentar o 1º do mesmo grupo".
-  // O fallback greedy anterior falhava em 118 combinações válidas: chegava no
-  // último slot com apenas o grupo homônimo disponível (ex: slot "L" vs único
-  // restante "L"), deixando o slot vazio e causando um time null no chaveamento.
   const winnerSlots = ["A","B","D","E","G","I","K","L"];
   const thirds = [...qualifiedGroups].sort();
   function backtrack(slotIndex, used, assignment) {

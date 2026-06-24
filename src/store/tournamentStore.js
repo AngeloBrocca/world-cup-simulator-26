@@ -24,8 +24,8 @@ const PRESET_SCORES = {
   "QAT-vs-SUI": { homeGoals: 1, awayGoals: 1 },
   "CAN-vs-QAT": { homeGoals: 6, awayGoals: 0 },
   "BIH-vs-SUI": { homeGoals: 1, awayGoals: 4 },
-  // "CAN-vs-SUI": { homeGoals: 0, awayGoals: 0 },
-  // "BIH-vs-QAT": { homeGoals: 0, awayGoals: 0 },
+  "CAN-vs-SUI": { homeGoals: 1, awayGoals: 2 },
+  "BIH-vs-QAT": { homeGoals: 3, awayGoals: 1 },
 
   // GRUPO C
   "BRA-vs-MAR": { homeGoals: 1, awayGoals: 1 },

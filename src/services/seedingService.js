@@ -16,6 +16,8 @@ export function selectBest8Thirds(allStandings) {
   return thirds.slice(0,8);
 }
 
+// Mapa: grupo do vencedor → índice da fixture R32 que tem bestThird naquele slot
+const WINNER_SLOT_TO_R32_INDEX = { A:10, B:14, D:6, E:0, G:7, I:1, K:15, L:11 };
  
 /**
  * Deriva os 16 confrontos da R32 a partir dos standings e dos winners salvos.
@@ -26,42 +28,59 @@ export function selectBest8Thirds(allStandings) {
 export function deriveR32Matches(allStandings, savedWinners) {
   const first  = Object.fromEntries(GROUP_KEYS.map(k=>[k,allStandings[k]?.[0]?.team??null]));
   const second = Object.fromEntries(GROUP_KEYS.map(k=>[k,allStandings[k]?.[1]?.team??null]));
+ 
+  // best8: os 8 melhores 3ºs classificados, ordenados do melhor para o pior
   const best8       = selectBest8Thirds(allStandings);
-  const best8Groups = best8.map(x=>x.groupKey);
-  const thirdSlots  = resolveThirdSlots(best8Groups);
-  const thirdTeam   = Object.fromEntries(best8.map(x=>[x.groupKey,x.standing?.team??null]));
+  const best8Groups = new Set(best8.map(x=>x.groupKey));
+  // thirdByGroup: groupKey -> entry do best8 (com .standing)
+  const thirdByGroup = Object.fromEntries(best8.map(x=>[x.groupKey, x]));
+ 
+  // Usa resolveThirdSlots (ANNEX_C + backtracking) para determinar qual grupo
+  // de 3º enfrenta cada vencedor. O resultado é { A: grpX, B: grpY, ... }
+  // onde a chave é o grupo do vencedor e o valor é o grupo do 3º classificado.
+  const slots = resolveThirdSlots([...best8Groups]);
+ 
+  // Converte o mapa de slots para assignedThird[fixtureIndex]
+  const assignedThird = {}; // fixtureIndex -> entry do best8
+  for (const [winnerGroup, thirdGroup] of Object.entries(slots)) {
+    const fi = WINNER_SLOT_TO_R32_INDEX[winnerGroup];
+    if (fi !== undefined && thirdByGroup[thirdGroup]) {
+      assignedThird[fi] = thirdByGroup[thirdGroup];
+    }
+  }
  
   return R32_FIXTURE_BASES.map((fix,i)=>{
     const resolve = src => {
-      if (src.type === "winner")
-        return first[src.g];
-
-      if (src.type === "runnerUp")
-        return second[src.g];
-
-      if (src.type === "bestThird") {
-        const tg = thirdSlots[src.w];
-        return thirdTeam[tg];
+      if (src.type==="winner")    return first[src.g]??null;
+      if (src.type==="runnerUp")  return second[src.g]??null;
+      if (src.type==="bestThird") {
+        return assignedThird[i]?.standing?.team ?? null;
       }
+      return null;
     };
     const home=resolve(fix.home), away=resolve(fix.away);
     const saved=savedWinners[i];
     const winnerValid=saved&&((home?.id===saved.id)||(away?.id===saved.id));
  
-    const homeLabel = fix.home.type==="winner"   ? `1º Grp ${fix.home.g}`
-                    : fix.home.type==="runnerUp" ? `2º Grp ${fix.home.g}` : null;
-    const awayLabel = fix.away.type==="runnerUp"  ? `2º Grp ${fix.away.g}`
-                    : fix.away.type==="bestThird" ? (()=>{
-                        const tg=thirdSlots[fix.away.w];
-                        const rank=tg?best8Groups.indexOf(tg):-1;
-                        return tg?`3º Grp ${tg}${rank>=0?` (${rank+1}º melhor)`:""}` : "3º (a definir)";
-                      })() : null;
+    const labelFor = src => {
+      if (src.type==="winner")    return `1º Grp ${src.g}`;
+      if (src.type==="runnerUp")  return `2º Grp ${src.g}`;
+      if (src.type==="bestThird") {
+        const a = assignedThird[i];
+        if (!a) return `3º (${src.eligible.join("/")})`;
+        const rank = best8.findIndex(x=>x.groupKey===a.groupKey);
+        return `3º Grp ${a.groupKey}${rank>=0?` (${rank+1}º melhor)`:""}`;
+      }
+      return null;
+    };
+    const homeLabel = labelFor(fix.home);
+    const awayLabel = labelFor(fix.away);
  
     return {id:fix.id,round:"r32",position:i,label:fix.label,homeLabel,awayLabel,home,away,winner:winnerValid?saved:null};
   });
 }
 
- 
+
 export function deriveR16FromR32(r32Winners, currentBracket) {
   let bracket={...currentBracket};
   for (let i=0;i<16;i++) {
