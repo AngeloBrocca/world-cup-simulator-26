@@ -95,7 +95,7 @@ const PRESET_SCORES = {
   "POR-vs-COD": { homeGoals: 1, awayGoals: 1 },
   "UZB-vs-COL": { homeGoals: 1, awayGoals: 3 },
   "POR-vs-UZB": { homeGoals: 5, awayGoals: 0 },
-  "COD-vs-COL": { homeGoals: 1, awayGoals: 0 },
+  "COD-vs-COL": { homeGoals: 0, awayGoals: 1 },
   // "POR-vs-COL": { homeGoals: 0, awayGoals: 0 },
   // "COD-vs-UZB": { homeGoals: 0, awayGoals: 0 },
 
