@@ -94,16 +94,16 @@ const PRESET_SCORES = {
   // GRUPO K
   "POR-vs-COD": { homeGoals: 1, awayGoals: 1 },
   "UZB-vs-COL": { homeGoals: 1, awayGoals: 3 },
-  // "POR-vs-UZB": { homeGoals: 0, awayGoals: 0 },
-  // "COD-vs-COL": { homeGoals: 0, awayGoals: 0 },
+  "POR-vs-UZB": { homeGoals: 5, awayGoals: 0 },
+  "COD-vs-COL": { homeGoals: 1, awayGoals: 0 },
   // "POR-vs-COL": { homeGoals: 0, awayGoals: 0 },
   // "COD-vs-UZB": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO L
   "ENG-vs-CRO": { homeGoals: 4, awayGoals: 2 },
   "GHA-vs-PAN": { homeGoals: 1, awayGoals: 0 },
-  // "ENG-vs-GHA": { homeGoals: 0, awayGoals: 0 },
-  // "CRO-vs-PAN": { homeGoals: 0, awayGoals: 0 },
+  "ENG-vs-GHA": { homeGoals: 0, awayGoals: 0 },
+  "CRO-vs-PAN": { homeGoals: 1, awayGoals: 0 },
   // "ENG-vs-PAN": { homeGoals: 0, awayGoals: 0 },
   // "CRO-vs-GHA": { homeGoals: 0, awayGoals: 0 },
 };
