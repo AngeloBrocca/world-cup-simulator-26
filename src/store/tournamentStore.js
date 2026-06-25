@@ -16,8 +16,8 @@ const PRESET_SCORES = {
   "KOR-vs-CZE": { homeGoals: 2, awayGoals: 1 },
   "MEX-vs-KOR": { homeGoals: 1, awayGoals: 0 },
   "RSA-vs-CZE": { homeGoals: 1, awayGoals: 1 },
-  // "MEX-vs-CZE": { homeGoals: 0, awayGoals: 0 },
-  // "RSA-vs-KOR": { homeGoals: 0, awayGoals: 0 },
+  "MEX-vs-CZE": { homeGoals: 3, awayGoals: 0 },
+  "RSA-vs-KOR": { homeGoals: 1, awayGoals: 0 },
 
   // GRUPO B
   "CAN-vs-BIH": { homeGoals: 1, awayGoals: 1 },
@@ -32,8 +32,8 @@ const PRESET_SCORES = {
   "HTI-vs-SCO": { homeGoals: 0, awayGoals: 1 },
   "BRA-vs-HTI": { homeGoals: 3, awayGoals: 0 },
   "MAR-vs-SCO": { homeGoals: 1, awayGoals: 0 },
-  // "BRA-vs-SCO": { homeGoals: 0, awayGoals: 0 },
-  // "MAR-vs-HTI": { homeGoals: 0, awayGoals: 0 },
+  "BRA-vs-SCO": { homeGoals: 3, awayGoals: 0 },
+  "MAR-vs-HTI": { homeGoals: 4, awayGoals: 2 },
 
   // GRUPO D
   "AUS-vs-TUR": { homeGoals: 2, awayGoals: 0 },
