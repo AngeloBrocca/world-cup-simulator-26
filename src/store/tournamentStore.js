@@ -40,24 +40,24 @@ const PRESET_SCORES = {
   "USA-vs-PAR": { homeGoals: 4, awayGoals: 1 },
   "USA-vs-AUS": { homeGoals: 2, awayGoals: 0 },
   "PAR-vs-TUR": { homeGoals: 1, awayGoals: 0 },
-  // "USA-vs-TUR": { homeGoals: 0, awayGoals: 0 },
-  // "PAR-vs-AUS": { homeGoals: 0, awayGoals: 0 },
+  "USA-vs-TUR": { homeGoals: 2, awayGoals: 3 },
+  "PAR-vs-AUS": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO E
   "GER-vs-CUW": { homeGoals: 7, awayGoals: 1 },
   "CIV-vs-ECU": { homeGoals: 2, awayGoals: 2 },
   "GER-vs-CIV": { homeGoals: 2, awayGoals: 1 },
   "CUW-vs-ECU": { homeGoals: 0, awayGoals: 0 },
-  // "GER-vs-ECU": { homeGoals: 0, awayGoals: 0 },
-  // "CUW-vs-CIV": { homeGoals: 0, awayGoals: 0 },
+  "GER-vs-ECU": { homeGoals: 1, awayGoals: 2 },
+  "CUW-vs-CIV": { homeGoals: 0, awayGoals: 2 },
 
   // GRUPO F
   "NED-vs-JPN": { homeGoals: 1, awayGoals: 0 },
   "SWE-vs-TUN": { homeGoals: 5, awayGoals: 1 },
   "NED-vs-SWE": { homeGoals: 5, awayGoals: 1 },
   "JPN-vs-TUN": { homeGoals: 4, awayGoals: 0 },
-  // "NED-vs-TUN": { homeGoals: 0, awayGoals: 0 },
-  // "JPN-vs-SWE": { homeGoals: 0, awayGoals: 0 },
+  "NED-vs-TUN": { homeGoals: 3, awayGoals: 1 },
+  "JPN-vs-SWE": { homeGoals: 1, awayGoals: 1 },
 
   // GRUPO G
   "BEL-vs-EGY": { homeGoals: 1, awayGoals: 1 },
