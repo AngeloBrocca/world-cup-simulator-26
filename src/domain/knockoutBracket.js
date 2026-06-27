@@ -192,6 +192,9 @@ export const ANNEX_C = {
   "ABCDEFIJ":  _c("B","A","C","D","I","F","J","E"),
   "ABCDEIJK":  _c("B","A","C","D","I","E","K","J"),
   "ABCDEIJL":  _c("B","A","C","D","I","E","J","L"),
+  // Gerado pelos PRESET_SCORES atuais: 3ºs de A,B,D,E,F,I,J,L no top-8
+  "ABDEFIJL":  _c("F","J","B","A","E","D","L","I"),
+  "ABDEFGIL":  _c("E","G","B","D","A","F","L","I"),
 };
  
 export function resolveThirdSlots(qualifiedGroups) {

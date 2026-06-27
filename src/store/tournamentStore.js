@@ -45,7 +45,7 @@ const PRESET_SCORES = {
 
   // GRUPO E
   "GER-vs-CUW": { homeGoals: 7, awayGoals: 1 },
-  "CIV-vs-ECU": { homeGoals: 2, awayGoals: 2 },
+  "CIV-vs-ECU": { homeGoals: 1, awayGoals: 0 },
   "GER-vs-CIV": { homeGoals: 2, awayGoals: 1 },
   "CUW-vs-ECU": { homeGoals: 0, awayGoals: 0 },
   "GER-vs-ECU": { homeGoals: 1, awayGoals: 2 },
