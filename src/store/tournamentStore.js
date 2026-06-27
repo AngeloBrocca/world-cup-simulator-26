@@ -64,24 +64,24 @@ const PRESET_SCORES = {
   "IRN-vs-NZL": { homeGoals: 2, awayGoals: 2 },
   "BEL-vs-IRN": { homeGoals: 0, awayGoals: 0 },
   "EGY-vs-NZL": { homeGoals: 3, awayGoals: 1 },
-  // "BEL-vs-NZL": { homeGoals: 0, awayGoals: 0 },
-  // "EGY-vs-IRN": { homeGoals: 0, awayGoals: 0 },
+  "BEL-vs-NZL": { homeGoals: 5, awayGoals: 1 },
+  "EGY-vs-IRN": { homeGoals: 1, awayGoals: 1 },
 
   // GRUPO H
   "ESP-vs-CPV": { homeGoals: 0, awayGoals: 0 },
   "KSA-vs-URU": { homeGoals: 1, awayGoals: 1 },
   "ESP-vs-KSA": { homeGoals: 4, awayGoals: 0 },
   "CPV-vs-URU": { homeGoals: 2, awayGoals: 2 },
-  // "ESP-vs-URU": { homeGoals: 0, awayGoals: 0 },
-  // "CPV-vs-KSA": { homeGoals: 0, awayGoals: 0 },
+  "ESP-vs-URU": { homeGoals: 1, awayGoals: 0 },
+  "CPV-vs-KSA": { homeGoals: 0, awayGoals: 0 },
 
   // GRUPO I
   "FRA-vs-SEN": { homeGoals: 3, awayGoals: 1 },
   "IRQ-vs-NOR": { homeGoals: 1, awayGoals: 4 },
   "FRA-vs-IRQ": { homeGoals: 3, awayGoals: 0 },
   "SEN-vs-NOR": { homeGoals: 2, awayGoals: 3 },
-  // "FRA-vs-NOR": { homeGoals: 0, awayGoals: 0 },
-  // "SEN-vs-IRQ": { homeGoals: 0, awayGoals: 0 },
+  "FRA-vs-NOR": { homeGoals: 4, awayGoals: 1 },
+  "SEN-vs-IRQ": { homeGoals: 5, awayGoals: 0 },
 
   // GRUPO J
   "ARG-vs-ALG": { homeGoals: 3, awayGoals: 0 },
