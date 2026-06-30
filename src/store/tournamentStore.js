@@ -1,7 +1,7 @@
 import { createContext, useReducer, useContext, useMemo } from "react";
 import { GROUP_KEYS, GROUPS } from "../domain/data";
-import { generateGroupMatches, generateKnockoutBracket, advanceWinner, clearDownstream } from "../services/tournamentService";
-import { deriveR16FromR32 } from "../services/seedingService";
+import { generateGroupMatches, generateKnockoutBracket, advanceWinner, clearDownstream, calculateStandings } from "../services/tournamentService";
+import { deriveR16FromR32, deriveR32Matches } from "../services/seedingService";
 
 
 export const ACTIONS = { SET_SCORE:"SET_SCORE", SET_GROUP:"SET_GROUP", SET_VIEW:"SET_VIEW", PICK_R32:"PICK_R32", PICK_WINNER:"PICK_WINNER", RESET:"RESET" };
@@ -108,6 +108,19 @@ const PRESET_SCORES = {
   "CRO-vs-GHA": { homeGoals: 2, awayGoals: 1 },
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// RESULTADOS JÁ DISPUTADOS NOS 16-AVOS — adicione aqui os vencedores confirmados.
+// Chave: índice da fixture R32 (0–15, conforme R32_FIXTURE_BASES / label M73–M88)
+// Valor: ID do time vencedor
+// ─────────────────────────────────────────────────────────────────────────────
+const PRESET_R32_WINNERS = {
+  2: "CAN",
+  3: "MAR",
+  0: "PAR",
+  8: "BRA",
+};
+
+
 function applyPresetScores(groupMatches) {
   const updated = {};
   for (const [group, matches] of Object.entries(groupMatches)) {
@@ -119,16 +132,35 @@ function applyPresetScores(groupMatches) {
   return updated;
 }
 
-
 function buildInitialState() {
   const rawMatches = Object.fromEntries(GROUP_KEYS.map(k => [k, generateGroupMatches(GROUPS[k])]));
+  const groupMatches = applyPresetScores(rawMatches);
+ 
+  // Calcula standings e partidas R32 para resolver os times reais nos slots
+  const allStandings = Object.fromEntries(GROUP_KEYS.map(k => [k, calculateStandings(GROUPS[k], groupMatches[k])]));
+  const r32Matches = deriveR32Matches(allStandings, Array(16).fill(null));
+ 
+  // Aplica vencedores pré-definidos dos 16-avos
+  const r32Winners = Array(16).fill(null);
+  for (const [idxStr, winnerId] of Object.entries(PRESET_R32_WINNERS)) {
+    const idx = Number(idxStr);
+    const match = r32Matches[idx];
+    const winner = match?.home?.id === winnerId ? match.home
+                 : match?.away?.id === winnerId ? match.away
+                 : null;
+    if (winner) r32Winners[idx] = winner;
+  }
+ 
+  const knockoutBracket = deriveR16FromR32(r32Winners, generateKnockoutBracket());
+ 
   return {
     view:"groups", activeGroup:"A",
-    groupMatches: applyPresetScores(rawMatches),
-    r32Winners:Array(16).fill(null),
-    knockoutBracket:generateKnockoutBracket(),
+    groupMatches,
+    r32Winners,
+    knockoutBracket,
   };
 }
+
 
  
 function reducer(state, action) {
