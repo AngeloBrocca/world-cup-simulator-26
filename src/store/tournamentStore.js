@@ -117,7 +117,10 @@ const PRESET_R32_WINNERS = {
   2: "CAN",
   3: "MAR",
   0: "PAR",
+  1: "FRA",
   8: "BRA",
+  9: "NOR",
+  10: "MEX",
 };
 
 
