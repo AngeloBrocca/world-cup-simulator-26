@@ -118,12 +118,15 @@ const PRESET_R32_WINNERS = {
   3: "MAR",
   0: "PAR",
   1: "FRA",
+  4: "POR",
+  5: "ESP",
   6: "USA",
   7: "BEL",
   8: "BRA",
   9: "NOR",
   10: "MEX",
   11: "ENG",
+  14: "SUI",
 };
 
 
