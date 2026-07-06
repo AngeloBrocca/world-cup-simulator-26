@@ -126,9 +126,18 @@ const PRESET_R32_WINNERS = {
   9: "NOR",
   10: "MEX",
   11: "ENG",
+  12: "ARG",
+  13: "EGY",
   14: "SUI",
+  15: "COL"
 };
 
+// RESULTADOS JÁ DISPUTADOS NAS OITAVAS — adicione aqui os vencedores confirmados.
+const PRESET_R16_WINNERS = {
+  0: "FRA",
+  1: "MAR",
+  4: "NOR",
+};
 
 function applyPresetScores(groupMatches) {
   const updated = {};
@@ -160,7 +169,17 @@ function buildInitialState() {
     if (winner) r32Winners[idx] = winner;
   }
  
-  const knockoutBracket = deriveR16FromR32(r32Winners, generateKnockoutBracket());
+  let knockoutBracket = deriveR16FromR32(r32Winners, generateKnockoutBracket());
+ 
+  // Aplica vencedores pré-definidos das oitavas, propagando para quartas/semi/final
+  for (const [idxStr, winnerId] of Object.entries(PRESET_R16_WINNERS)) {
+    const idx = Number(idxStr);
+    const match = knockoutBracket.r16[idx];
+    const winner = match?.home?.id === winnerId ? match.home
+                 : match?.away?.id === winnerId ? match.away
+                 : null;
+    if (winner) knockoutBracket = advanceWinner(clearDownstream(knockoutBracket,"r16",idx),"r16",idx,winner);
+  }
  
   return {
     view:"groups", activeGroup:"A",
@@ -169,8 +188,6 @@ function buildInitialState() {
     knockoutBracket,
   };
 }
-
-
  
 function reducer(state, action) {
   switch (action.type) {
