@@ -136,7 +136,12 @@ const PRESET_R32_WINNERS = {
 const PRESET_R16_WINNERS = {
   0: "FRA",
   1: "MAR",
+  2: "ESP",
+  3: "BEL",
   4: "NOR",
+  5: "ENG",
+  6: "ARG",
+  7: "SUI"
 };
 
 function applyPresetScores(groupMatches) {
