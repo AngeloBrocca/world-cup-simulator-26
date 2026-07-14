@@ -144,6 +144,14 @@ const PRESET_R16_WINNERS = {
   7: "SUI"
 };
 
+const PRESET_QF_WINNERS = {
+  // Exemplo: 0: "BRA",
+  0: "FRA",
+  1: "ESP",
+  2: "ENG",
+  3: "ARG"
+};
+
 function applyPresetScores(groupMatches) {
   const updated = {};
   for (const [group, matches] of Object.entries(groupMatches)) {
@@ -184,6 +192,16 @@ function buildInitialState() {
                  : match?.away?.id === winnerId ? match.away
                  : null;
     if (winner) knockoutBracket = advanceWinner(clearDownstream(knockoutBracket,"r16",idx),"r16",idx,winner);
+  }
+ 
+  // Aplica vencedores pré-definidos das quartas, propagando para semi/final
+  for (const [idxStr, winnerId] of Object.entries(PRESET_QF_WINNERS)) {
+    const idx = Number(idxStr);
+    const match = knockoutBracket.qf[idx];
+    const winner = match?.home?.id === winnerId ? match.home
+                 : match?.away?.id === winnerId ? match.away
+                 : null;
+    if (winner) knockoutBracket = advanceWinner(clearDownstream(knockoutBracket,"qf",idx),"qf",idx,winner);
   }
  
   return {
